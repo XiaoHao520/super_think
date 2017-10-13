@@ -1,0 +1,107 @@
+<li class="list-group-item" style="margin-bottom: 20px;box-shadow: 0 0 5px 0px #000000">
+    <div class="container">
+        <div id="left" class="col-sm-12 col-md-1 col-lg-1 col-xs-3 headerContainer">
+            <img class="header" src="http://192.168.1.205/public/static/img/header.jpg">
+        </div>
+
+        <div class="right">
+            <span class="username">"+item.userID+"</span><br>
+            <span class="date">"+item.date+"</span>
+
+        </div>
+
+    </div>
+    <div class="content">
+                    <span class="contentText">
+                      "+item.content+"</span>
+
+        <div class="imgs">
+            <table class="imgTable">
+
+
+                <tr class="imgTr">
+                    {for start='1' end='4'}
+                    {if condition="($i==1)"}
+                    {if condition="($vo.img1!=null)"}
+
+                    <td><img class="col-xs-1 col-lg-3 imgPre"
+                             src="{$vo.img1}"></td>
+                    {/if}
+                    {/if}
+                    {if condition="($i==2)"}
+                    {if condition="($vo.img2!=null)"}
+
+                    <td><img class="col-xs-1 col-lg-3 imgPre"
+                             src="{$vo.img2}"></td>
+                    {/if}
+                    {/if}
+                    {if condition="($i==3)"}
+                    {if condition="($vo.img3!=null)"}
+
+                    <td><img class="col-xs-1 col-lg-3 imgPre"
+                             src="{$vo.img3}"></td>
+                    {/if}
+                    {/if}
+                    {/for}
+                </tr>
+
+                {/if}
+                {if condition="($vo.img4!=null)"}
+                <tr class="imgTr">
+                    {for start='1' end='4'}
+                    {if condition="($i==1)"}
+                    {if condition="($vo.img4!=null)"}
+
+                    <td><img class="col-xs-1 col-lg-3 imgPre"
+                             src="{$vo.img4}"></td>
+                    {/if}
+                    {/if}
+                    {if condition="($i==2)"}
+                    {if condition="($vo.img5!=null)"}
+
+                    <td><img class="col-xs-1 col-lg-3 imgPre"
+                             src="{$vo.img5}"></td>
+                    {/if}
+                    {/if}
+                    {if condition="($i==3)"}
+                    {if condition="($vo.img6!=null)"}
+
+                    <td><img class="col-xs-1 col-lg-3 imgPre"
+                             src="{$vo.img6}"></td>
+                    {/if}
+                    {/if}
+                    {/for}
+                </tr>
+                {/if}
+                {if condition="($vo.img7!=null)"}
+                <tr class="imgTr">
+                    {for start='1' end='4'}
+                    {if condition="($i==1)"}
+                    {if condition="($vo.img7!=null)"}
+
+                    <td><img class="col-xs-1 col-lg-3 imgPre"
+                             src="{$vo.img7}"></td>
+                    {/if}
+                    {/if}
+                    {if condition="($i==2)"}
+                    {if condition="($vo.img8!=null)"}
+
+                    <td><img class="col-xs-1 col-lg-3 imgPre"
+                             src="{$vo.img8}"></td>
+                    {/if}
+                    {/if}
+                    {if condition="($i==3)"}
+                    {if condition="($vo.img9!=null)"}
+
+                    <td><img class="col-xs-1 col-lg-3 imgPre"
+                             src="{$vo.img9}"></td>
+                    {/if}
+                    {/if}
+                    {/for}
+                </tr>
+                {/if}
+            </table>
+        </div>
+    </div>
+
+</li>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+    <style>
+
+        *{
+            padding: 0;
+            margin:0;}
+        .back {
+
+            font-size: 30px;
+
+            left: 10px;
+
+        }
+        a{
+            background: none;
+            text-decoration: none;
+        }
+
+        textarea {
+            width: 100%;
+            background-color: #22aadd;
+            height: 300px;
+            min-height: 300px;
+            font-size: 20px;
+            padding: 50px;
+            margin: 20px;
+
+
+        }
+        .mknews{
+            line-height: 40px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        header{
+            height: 40px;
+            background-color: #b118dd;
+            text-align: center;
+        }
+        .title{
+            margin: 0 auto;
+
+
+        }
+
+    </style>
+</head><body>
+<div data-role="page">
+
+    <div data-role="header">
+          <span href="javascript:history.back()" class="back">返回</span>
+        <div class="title">发表动态</div>
+    </div>
+
+    <div data-role="main" class="ui-content">
+       <form>
+           <textarea>
+           </textarea>
+           <input type="file">
+
+       </form>
+    </div>
+
+    <div data-role="footer">
+        <h1>底部文本</h1>
+    </div>
+
+</div>
+</body>
+</html>

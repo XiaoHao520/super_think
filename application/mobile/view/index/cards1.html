@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="http://localhost/public/static/"/>
+    <meta charset="UTF-8">
+    <title>news</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+    <style>
+
+        * {
+
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerContainer {
+            background-color: #2a2a2a;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .headerContainer .header {
+            width: 100%;
+            height: 100%;
+        }
+
+        .username {
+            position: relative;
+            font-size: 20px;
+            margin-top: 20px;
+            left: 10px;
+        }
+
+        .list-group-item {
+            min-height: 300px;
+        }
+
+        .content {
+
+            margin-top: 40px;
+        }
+
+        .contentText {
+
+            margin-top: 100px;
+            font-size: 20px;
+            width: 90%;
+            min-height: 100px;
+            max-height: 500px;
+
+            display: block;
+            white-space: normal;
+            word-wrap: break-word;
+            word-break: break-all;
+            line-height: 20px;
+            padding: 10px;
+            font-family: Arial;
+
+        }
+
+        .content .action {
+            line-height: 40px;
+            margin-top: 20px;
+            width: 100%;
+            height: 40px;
+        }
+
+        .date {
+            position: relative;
+            font-size: 15px;
+            top: 25px;
+            margin-left: 20px;
+        }
+
+        .imgPre {
+            width: 100px;
+            height: 100px;
+
+        }
+
+        .imgTable {
+            margin: 0 auto;
+        }
+
+        .imgTr {
+            margin-top: 310px;
+            height: 120px;
+        }
+
+        #left {
+
+            float: left;
+        }
+
+        .right {
+            float: right;
+            position: absolute;
+            left: 110px;
+            top: 30px;
+
+        }
+
+        .good {
+            position: absolute;
+            right: 30px;
+        }
+
+        .comment {
+            width: 30px;
+            height: 30px;
+        }
+
+        .love {
+            width: 30px;
+
+            height: 30px;
+
+        }
+
+        .chooseAction {
+            height: 40px;
+            padding: 0;
+            background: none;
+            border: none;
+        }
+
+        #newCard {
+            position: fixed;
+            bottom: 50px;
+            right: 40px;
+            background-color: #22aadd;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            z-index: 1000;
+            text-align: center;
+            line-height: 50px;
+            font-size: 50px;
+        }
+
+        .listview li {
+            padding-bottom: 100px;
+            margin-bottom: 100px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div data-role="page" id="pageone">
+    <div data-role="main" class="ui-content">
+        <ul data-role="listview" data-inset="false" class="list-group" id="news">
+
+            {volist name='notes' id='vo'}
+
+
+            <li class="list-group-item" style="margin-bottom: 20px;box-shadow: 0 0 5px 0px #000000">
+                <div class="container">
+                    <div id="left" class="col-sm-12 col-md-1 col-lg-1 col-xs-3 headerContainer">
+                        <img class="header" src="http://192.168.1.205/public/static/img/header.jpg">
+                    </div>
+
+                    <div class="right">
+                        <span class="username">{$vo.user_nickname}</span><br>
+                        <span class="date">{$vo.note_date}</span>
+
+                    </div>
+
+                </div>
+                <div class="content">
+                    <span class="contentText">
+                      {$vo.note_content}</span>
+
+                    <div class="imgs">
+                        <table class="imgTable">
+
+
+                            <tr class="imgTr">
+
+                                <td><img class="col-xs-1 col-lg-3 imgPre"
+                                         src="{$vo.image_path}>"></td>
+
+
+                                <td><img class="col-xs-1 col-lg-3 imgPre"
+                                         src="{$vo.image_path}>"></td>
+
+                                <td><img class="col-xs-1 col-lg-3 imgPre"
+                                         src="{$vo.image_path}>"></td>
+
+                            </tr>
+
+
+                            <tr class="imgTr">
+
+                                <td><img class="col-xs-1 col-lg-3 imgPre"
+                                         src="{$vo.image_path}>"></td>
+                                <td><img class="col-xs-1 col-lg-3 imgPre"
+                                         src="{$vo.image_path}>"></td>
+                                <td><img class="col-xs-1 col-lg-3 imgPre"
+                                         src="{$vo.image_path}>"></td>
+
+                            </tr>
+
+                            <tr class="imgTr">
+
+
+                                <td><img class="col-xs-1 col-lg-3 imgPre"
+                                         src="{$vo.image_path}>"></td>
+                                <td><img class="col-xs-1 col-lg-3 imgPre"
+                                         src="{$vo.image_path}>"></td>
+                                <td><img class="col-xs-1 col-lg-3 imgPre"
+                                         src="{$vo.image_path}>"></td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+
+            </li>
+
+            {/volist}
+        </ul>
+
+        <div id="more"
+             style="width: 100%;height: 80px;background-color: #2aabd2;font-size: 50px;position: fixed;bottom: 100px">更多
+        </div>
+
+    </div>
+
+
+    <script>
+
+        $(document).bind('mobileinit', function () {
+            jQuery.mobile.ajaxEnabled = true;
+        });
+        var nStart = 5;
+
+        $("#more").click(function () {
+
+            console.log("点击了更多");
+            if (nStart >= {$total}) {
+                alert("没有数据了");
+                return;
+            }
+
+            $.ajax({
+                url: "http://localhost/public/index.php/news/Index/data",
+                // url:"http://192.168.1.205/public/index.php/news/Index/data",
+                data: {start: nStart},
+                success: function (res) {
+                    console.log(res);
+                    $.each(res, function (i, item) {
+                        var str = "  <li class=\"list-group-item\" style=\"margin-bottom: 20px;box-shadow: 0 0 5px 0px #000000\">\n" +
+                            "                <div class=\"container\">\n" +
+                            "                    <div id=\"left\" class=\"col-sm-12 col-md-1 col-lg-1 col-xs-3 headerContainer\">\n" +
+                            "                        <img class=\"header\" src=\"http://192.168.1.205/public/static/img/header.jpg\">\n" +
+                            "                    </div>\n" +
+                            "\n" +
+                            "                    <div class=\"right\">\n" +
+                            "                        <span class=\"username\">" + item.userID + "</span><br>\n" +
+                            "                        <span class=\"date\">" + item.date + "</span>\n" +
+                            "\n" +
+                            "                    </div>\n" +
+                            "\n" +
+                            "                </div>\n" +
+                            "                <div class=\"content\">\n" +
+                            "                    <span class=\"contentText\">\n" +
+                            "                      " + item.content + "</span>" +
+                            "<div class=\"imgs\">\n" +
+                            "                        <table class=\"imgTable\">\n";
+
+
+                        for (var i = 1; i <= 3; i++) {
+
+                            if (i == 1) {
+                                if (item.img1 != null) {
+                                    str += " <tr class=\"imgTr\">\n" +
+                                        "<td><img class=\"col-xs-1 col-lg-3 imgPre\"\n" +
+                                        "src=\"<?php echo $vo['img1']?>\"></td>";
+
+                                } else {
+                                    break;
+                                }
+                                if (item.img2 != null) {
+                                    str += "<td><img class=\"col-xs-1 col-lg-3 imgPre\"\n" +
+                                        "src=\"<?php echo $vo['img2']?>\"></td>";
+                                } else {
+                                    break;
+                                }
+                                if (item.img3 != null) {
+                                    str += "<td><img class=\"col-xs-1 col-lg-3 imgPre\"\n" +
+                                        "src=\"<?php echo $vo['img3']?>\"></td></tr>";
+                                } else {
+                                    break;
+                                }
+
+                            }
+                            if (i == 2) {
+                                if (item.img4 != null) {
+                                    str += " <tr class=\"imgTr\">\n" +
+                                        "<td><img class=\"col-xs-1 col-lg-3 imgPre\"\n" +
+                                        "src=\"<?php echo $vo['img4']?>\"></td>";
+
+                                } else {
+                                    break;
+                                }
+                                if (item.img5 != null) {
+                                    str += "<td><img class=\"col-xs-1 col-lg-3 imgPre\"\n" +
+                                        "src=\"<?php echo $vo['img5']?>\"></td>";
+                                } else {
+                                    break;
+                                }
+                                if (item.img6 != null) {
+                                    str += "<td><img class=\"col-xs-1 col-lg-3 imgPre\"\n" +
+                                        "src=\"<?php echo $vo['img6']?>\"></td></tr>";
+                                } else {
+                                    break;
+                                }
+
+                            }
+                            if (i == 3) {
+                                if (item.img7 != null) {
+                                    str += " <tr class=\"imgTr\">\n" +
+                                        "<td><img class=\"col-xs-1 col-lg-3 imgPre\"\n" +
+                                        "src=\"<?php echo $vo['img7']?>\"></td>";
+
+                                } else {
+                                    break;
+                                }
+                                if (item.img8 != null) {
+                                    str += "<td><img class=\"col-xs-1 col-lg-3 imgPre\"\n" +
+                                        "src=\"<?php echo $vo['img8']?>\"></td>";
+                                } else {
+                                    break;
+                                }
+                                if (item.img9 != null) {
+                                    str += "<td><img class=\"col-xs-1 col-lg-3 imgPre\"\n" +
+                                        "src=\"<?php echo $vo['img9']?>\"></td></tr>";
+                                } else {
+                                    break;
+                                }
+
+                            }
+                        }
+
+
+                        str += "</table>\n" +
+                            "</div>\n" +
+                            "</div>\n" +
+                            "\n" +
+                            "</li>";
+                        console.log(str);
+                        $('#news').append(str);
+                    });
+                }, error: function (data) {
+
+                    alert("获取数据失败");
+                }
+            });
+            nStart += 5;
+        });
+    </script>
+</div>
+
+</body>
+</html>
