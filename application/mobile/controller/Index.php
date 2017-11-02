@@ -55,13 +55,13 @@ class Index extends Controller
                     </div>
                 </div> <!----></article>
             <footer class=\"m-ctrl-box m-box-center-a\">
-                <div class=\"m-diy-btn m-box-col m-box-center m-box-center-a\"><i
+                <div class=\"m-diy-btn m-box-col m-box-center m-box-center-a\"><i id='".$rs[$i]['note_id']."'
                         class=\"m-font m-font-forward\"></i> <h4>转发</h4></div>
                 <span class=\"m-line-gradient\"></span>
-                <div class=\"m-diy-btn m-box-col m-box-center m-box-center-a\"><i
+                <div class=\"m-diy-btn m-box-col m-box-center m-box-center-a\"><i id='".$rs[$i]['note_id']."'
                         class=\"m-font m-font-comment\"></i> <h4>评论</h4></div>
                 <span class=\"m-line-gradient\"></span>
-                <div class=\"m-diy-btn m-box-col m-box-center m-box-center-a\"><i class=\"m-icon m-icon-like\"></i>
+                <div class=\"m-diy-btn m-box-col m-box-center m-box-center-a\"><i id='".$rs[$i]['note_id']."' class=\"m-icon m-icon-like\"></i>
                     <h4>赞</h4></div>
             </footer>
         </div>
