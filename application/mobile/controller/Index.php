@@ -11,8 +11,6 @@ class Index extends Controller
 {
     public function index()
     {
-
-
         $notes = new Notes();
         $total = $notes->count();
         $arr = $this->query(0, 5);
@@ -30,11 +28,9 @@ class Index extends Controller
 
     function query($start, $size)
     {
-        $sql = "SELECT notes.*,user.* from notes,user WHERE user.user_id=notes.user_id LIMIT " . $start . ",5";
+        $sql = "SELECT notes.*,user.* from notes,user WHERE user.user_id=notes.user_id order by note_id desc LIMIT " . $start . ",5";
         $rs = Db::query($sql);
         $arr = array();
-
-
 
 
         for ($i = 0; $i < count($rs); $i++) {
@@ -55,7 +51,7 @@ class Index extends Controller
                     <div class=\"weibo-text\">" . $rs[$i]['note_content_text'] . " ​​​</div>
                     <div>
                         <div class=\"weibo-media-wraps weibo-media media-b\">
-                           ".$rs[$i]['note_content_images']." <!----></div>
+                           " . $rs[$i]['note_content_images'] . " <!----></div>
                     </div>
                 </div> <!----></article>
             <footer class=\"m-ctrl-box m-box-center-a\">
@@ -75,7 +71,41 @@ class Index extends Controller
             array_push($arr, $str);
         }
 
-
+        // echo var_export($arr);
         return $arr;
     }
+
+    public function savenote()
+    {
+        //$
+
+        $userId = request()->post("userid");
+        $content = request()->post("content");
+        $date = request()->post("date");
+        $images = request()->post("images");
+        $arr = explode("%", $images);
+
+
+        $lis = "";
+        for ($i = 0; $i < count($arr)-1; $i++) {
+            $lis = $lis . $this->pushImage($arr[$i]);
+        }
+        $lis = "<ul class=\"m-auto-list\">" . $lis . "</ul>";
+        $data=["user_id"=>$userId,"note_date"=>$date,"note_content_text"=>$content,"note_content_images"=>$lis,"note_school"=>"中山大学南方学院"];
+        Db::table("notes")->insert($data);
+        echo $lis;
+    }
+
+
+    private function pushImage($image)
+    {
+
+        $li = " <li class=\"m-auto-box\">
+                                     <div class=\"m-img-box m-imghold-square\"><img
+                                             src=\"" . $image . "\">
+                                     </div>
+                                 </li>";
+        return $li;
+    }
+
 }

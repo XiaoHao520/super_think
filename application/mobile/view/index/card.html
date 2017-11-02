@@ -2,12 +2,13 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <title>card</title>
     <link href="//h5.sinaimg.cn" rel="dns-prefetch">
     <link href="//h5.sinaimg.cn/upload/2015/05/15/28/WeiboLogoCh.svg" rel="icon" color="black" sizes="any" mask="">
     <link href="https://h5.sinaimg.cn/upload/2017/03/16/16/icon.png" rel="apple-touch-icon">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <meta name="format-detection" content="telephone=no">
-    <title>card</title>
+
     <meta name="theme-color" content="#F3F3F3">
     <link href="//h5.sinaimg.cn/marvel/v1.3.1/css/lib/base.css" rel="stylesheet">
     <link href="//h5.sinaimg.cn/marvel/v1.3.1/css/card/cards.css" rel="stylesheet">
@@ -353,25 +354,25 @@
 
     <style type="text/css">
         .card9 .weibo-main .weibo-media .single-img {
-        position: relative;
-        max-width: 9.375rem;
-        max-height: 9.375rem;
-        overflow: hidden
-    }
-
-    .card9 .weibo-main .weibo-media .single-img > img {
-        width: 100%
-    }
-
-    .card9 .weibo-main .media-b .m-auto-list {
-        max-width: 100%
-    }
-
-    @media screen and (min-width: 750px) {
-        .card9 .weibo-main .m-auto-list, .card9 .weibo-main .media-b .m-auto-list {
-            max-width: 400px
+            position: relative;
+            max-width: 9.375rem;
+            max-height: 9.375rem;
+            overflow: hidden
         }
-    }</style>
+
+        .card9 .weibo-main .weibo-media .single-img > img {
+            width: 100%
+        }
+
+        .card9 .weibo-main .media-b .m-auto-list {
+            max-width: 100%
+        }
+
+        @media screen and (min-width: 750px) {
+            .card9 .weibo-main .m-auto-list, .card9 .weibo-main .media-b .m-auto-list {
+                max-width: 400px
+            }
+        }</style>
     <style type="text/css"></style>
     <style type="text/css">.m-auto-list .m-auto-box1[data-v-3a6c5646] {
         -webkit-box-sizing: border-box;
@@ -407,17 +408,31 @@
     }</style>
     <style type="text/css">.card9 .card .card-main > .m-box > .m-box-col[data-v-35aef476] {
         margin-left: 0
-    }</style>
+    }
+
+    #newest {
+
+        width: 100%;
+        height: 200px;
+        background-color: #ff81ae;
+    }
+
+
+    </style>
 </head>
 <body id="body">
 
-<div>
-
-{volist name='notes' id='note'}
-{$note}
-{/volist}
+<div id="newest">
+    最新的帖子
 </div>
-<div style="color:#f2f6f4;text-align: center;width: 80px;height: 80px;line-height: 80px;background-color: #ff81ae;border-radius: 50%;position: fixed;bottom: 30px;right: 30px;font-size: 80px" onclick="window.imagePicker.openAlbum('open album')">+ </div>
+<div>
+    {volist name='notes' id='note'}
+    {$note}
+    {/volist}
+</div>
+<div style="color:#f2f6f4;text-align: center;width: 80px;height: 80px;line-height: 80px;background-color: #ff81ae;border-radius: 50%;position: fixed;bottom: 30px;right: 30px;font-size: 80px"
+     onclick="window.jsCall.makeNote()">+
+</div>
 <div id="more"
      style="line-height: 40px;text-align: center;width: 100%;height: 40px;color: #5f5f5f;font-size: 15px;font-weight: 100">
     更多
@@ -427,67 +442,50 @@
 <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 <script>
-    var done=true;
+    var done = true;
     var nStart = 5;
     $(document).ready(function () {
-
-
         $("#more").click(more);
-
-
-        $(window).scroll(function() {
-
-            if ($(document).scrollTop()<=0){
+        $(window).scroll(function () {
+            if ($(document).scrollTop() <= 0) {
                 console.log($(document).scrollTop());
 
-                 //document.location.reload();
+                //document.location.reload();
             }
 
             if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
-               console.log("滚动条已经到达底部为" + $(document).scrollTop());
+                console.log("滚动条已经到达底部为" + $(document).scrollTop());
 
-
-                    // more();
-
-
-
+                // more();
 
             }
         });
 
 
-
     })
 
     function more() {
-   console.log("click");
-
-
+        console.log("click");
         if (nStart >= {$total}) {
             alert("没有数据了");
             return;
         }
 
         $.ajax({
-            url: "http://39.108.178.40/study/public/index.php/mobile/index/data",
+            url: "http://www.sinbel.top/study/public/index.php/mobile/index/data",
             data: {start: nStart},
             success: function (res) {
-
                 $.each(res, function (i, item) {
                     console.log(item);
-                    $('body div:first').append(item);
+                    $('body div:eq(1)').append(item);
                 });
-                done=false;
+                done = false;
                 nStart += 5;
-                done=true;
-
+                done = true;
             }, error: function (data) {
-
                 alert("错误");
             }
         });
-
-
     }
 
 
