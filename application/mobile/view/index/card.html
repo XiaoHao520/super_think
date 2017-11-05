@@ -489,5 +489,27 @@
     }
 
 
+    function headerClick(userId) {
+
+        alert("header-click")
+    }
+
+    function noteClick(noteId) {
+
+
+    }
+
+    function likeClick(noteId, username) {
+        window.jsCall.likeClick(noteId, username);
+        $like = $("#" + noteId);
+        if ($like.text() == '赞') {
+
+            $like.text(1);
+        }else {
+            $like.text(parseInt($like.text())+1);
+        }
+
+    }
+
 </script>
 </html>

@@ -42,4 +42,25 @@ class User
         echo null;
 
     }
+     public function modify(){
+
+         $userHeader=request()->post("userHeader");
+         $nickname=request()->post("nickname");
+         $school=request()->post("school");
+         $userid=request()->post("userid");
+         if($userHeader!=null){
+             $data=['user_school'=>$school,"user_nickname"=>$nickname,'user_header',$userHeader];
+
+         }else{
+             $data=['user_school'=>$school,"user_nickname"=>$nickname];
+         }
+
+         $rs=Db::table("user")->where('user_id',$userid)->update($data);
+
+
+         $rs=Db::table("user")->where('user_id',$userid)->select();
+
+         echo json_encode($rs);
+     }
+
 }
