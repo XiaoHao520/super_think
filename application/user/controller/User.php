@@ -17,9 +17,11 @@ class User
         $username = request()->post("username");
         $password = request()->post("password");
         $rs = Db::table("user")->where("username", $username)->where("user_password", $password)->select();
+      if($rs[0]['store']!=0){
+         $rs2= Db::table("store")->where("store_holder",$username)->select();
+         array_push($rs,$rs2);
+      }
         echo json_encode($rs);
-
-
     }
 
     public function register()
@@ -56,7 +58,9 @@ class User
          }
 
          $rs=Db::table("user")->where('user_id',$userid)->update($data);
-         echo $rs;
+
+         $rs=Db::table("user")->where('user_id',$userid)->select();
+         echo json_encode($rs);
      }
 
 }
