@@ -63,4 +63,10 @@ class User
          echo json_encode($rs);
      }
 
+     public function userInfo(){
+             $username=request()->post("username");
+             $rs=Db::table("user")->where("username",$username)->select();
+             echo json_encode($rs);
+     }
+
 }

@@ -67,13 +67,22 @@ class Index
         $rs = Db::table('store_history')->where("store_holder", $storeHolder)->select();
         echo json_encode($rs);
     }
-    public function del(){
 
-        $storeName=request()->post("store");
-        Db::table("store_history")->where("store_name",$storeName)->delete();
-        Db::table("store")->where("store_name",$storeName)->delete();
+    public function del()
+    {
+
+        $storeName = request()->post("store");
+        Db::table("store_history")->where("store_name", $storeName)->delete();
+        Db::table("store")->where("store_name", $storeName)->delete();
 
 
+    }
+
+    public function loadStore()
+    {
+        $school = request()->post("school");
+        $rs = Db::table("store")->where("store_school", $school)->select();
+        echo json_encode($rs);
     }
 
 
