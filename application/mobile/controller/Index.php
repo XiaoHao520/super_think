@@ -80,7 +80,7 @@ class Index extends Controller
             $rs = '赞';
             return $rs;
         }
-        return  $rs[0]['num'];
+        return $rs[0]['num'];
     }
 
 
@@ -125,6 +125,40 @@ class Index extends Controller
         $data = ['note_id' => $note, 'from_user' => $from, 'to_user' => $to];
         Db::table("likes")->insert($data);
         $this->findLike($note);
+    }
+
+    public function oneNote()
+    {
+        $id = request()->get("noteid");
+        $sql = "SELECT notes.*,user.* from notes,user WHERE user.user_id=notes.user_id order by note_id";
+        $rs = Db::query($sql);
+        $note = $rs[0];
+        $str = "
+<div  class=\"card m-panel card9\">
+    <div class=\"card-wrap\">
+        <div class=\"card-main\"><!---->
+            <header  onclick='headerClick(" . $note['username'] . ")' class=\"weibo-top m-box m-avatar-box\"><a class=\"m-img-box\"><img
+                    src=\"" . $note['user_header'] . "\">
+                <!----></a>
+                <div class=\"m-box-col m-box-dir m-box-center\">
+                    <div class=\"m-text-box\"><a><h3 class=\"m-text-cut\">" . $note['user_nickname'] . "
+                        <!----></h3></a> <h4 class=\"m-text-cut\"><span class=\"time\">" . $note['note_date'] . "</span> <span
+                            class=\"from\"> 来自 " . $note['note_school'] . "</span></h4></div>
+                </div> <!----></header>
+             <article class=\"weibo-main\">
+                <div class=\"weibo-og\">
+                    <div class=\"weibo-text\">" . $note['note_content_text'] . " ​​​</div>
+                    <div>
+                        <div class=\"weibo-media-wraps weibo-media media-b\">
+                           " . $note['note_content_images'] . " <!----></div>
+                    </div>
+                </div> <!----></article>
+        
+        </div>
+    </div>
+</div>";
+        $this->assign("note", $str);
+        return $this->fetch("index/onenote");
     }
 
 }
